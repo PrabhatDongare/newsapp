@@ -23,7 +23,7 @@ const News = (props) => {
     useEffect(() => {
         const filteredArticles = data.articles.filter(article => article.source.category === props.category);
         location.pathname==='/'?setArticles(data.articles):setArticles(filteredArticles);
-      }, [props.category]);
+      }, [props.category, location.pathname]);
 
     // const updateNews = async () => {
     //     props.setProgress(10)
@@ -63,7 +63,8 @@ const News = (props) => {
             <InfiniteScroll
                 dataLength={articles.length}
                 // next={fetchMoreData}
-                hasMore={articles.length !== totalResults}
+                // hasMore={articles.length !== totalResults}
+                hasMore={articles.length !== '0'}
                 loader={<Spinner />}>
 
                 <div className='container my-4 '>
